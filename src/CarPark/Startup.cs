@@ -6,6 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using NLog;
+using System.IO;
 
 namespace CarPark
 {
@@ -13,6 +15,7 @@ namespace CarPark
     {
         public Startup(IConfiguration configuration)
         {
+            LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
             Configuration = configuration;
         }
 
@@ -30,6 +33,7 @@ namespace CarPark
             services.ConfigureSqlContext(Configuration);
             services.ConfigureCors();
             services.ConfigureRepositoryManager();
+            services.ConfigureLoggerManager();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

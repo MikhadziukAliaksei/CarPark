@@ -1,6 +1,8 @@
 ﻿using CarPark.Contracts.Interfaces;
 using CarPark.Entities.Context;
 using CarPark.Entities.Models;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CarPark.Repository.Repositories
 {
@@ -11,6 +13,9 @@ namespace CarPark.Repository.Repositories
         {
         }
 
-
+        public IEnumerable<Car> GetCars(bool trackChanges) =>
+            GetAll(trackChanges)
+            .OrderBy(item => item.Mark)
+            .ToList();
     }
 }
