@@ -29,6 +29,7 @@ namespace CarPark
             });
             services.ConfigureSqlContext(Configuration);
             services.ConfigureCors();
+            services.ConfigureRepositoryManager();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
