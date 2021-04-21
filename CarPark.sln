@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31112.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{002E5F7D-7386-485A-8D2D-5AD928F6F78F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{A85DB341-6871-47C5-ACF5-D120CFC84D5A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarPark.Api", "src\CarPark\CarPark.Api.csproj", "{36F80FD6-6073-435F-9653-1295D54C5E03}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarPark.Entities", "src\CarPark.Entities\CarPark.Entities.csproj", "{BEFE731F-5B1E-4BE2-9FC2-6545AECD1BF5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarPark.Repository", "src\CarPark.Repository\CarPark.Repository.csproj", "{91BFE222-DE24-437F-9480-EF3C611799EE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarPark.Contracts", "src\CarPark.Contracts\CarPark.Contracts.csproj", "{0E30ABFE-0929-4849-A322-B8DAE9AD13C5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{36F80FD6-6073-435F-9653-1295D54C5E03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36F80FD6-6073-435F-9653-1295D54C5E03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36F80FD6-6073-435F-9653-1295D54C5E03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36F80FD6-6073-435F-9653-1295D54C5E03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEFE731F-5B1E-4BE2-9FC2-6545AECD1BF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEFE731F-5B1E-4BE2-9FC2-6545AECD1BF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEFE731F-5B1E-4BE2-9FC2-6545AECD1BF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEFE731F-5B1E-4BE2-9FC2-6545AECD1BF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91BFE222-DE24-437F-9480-EF3C611799EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91BFE222-DE24-437F-9480-EF3C611799EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91BFE222-DE24-437F-9480-EF3C611799EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91BFE222-DE24-437F-9480-EF3C611799EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E30ABFE-0929-4849-A322-B8DAE9AD13C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E30ABFE-0929-4849-A322-B8DAE9AD13C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E30ABFE-0929-4849-A322-B8DAE9AD13C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E30ABFE-0929-4849-A322-B8DAE9AD13C5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{36F80FD6-6073-435F-9653-1295D54C5E03} = {002E5F7D-7386-485A-8D2D-5AD928F6F78F}
+		{BEFE731F-5B1E-4BE2-9FC2-6545AECD1BF5} = {002E5F7D-7386-485A-8D2D-5AD928F6F78F}
+		{91BFE222-DE24-437F-9480-EF3C611799EE} = {002E5F7D-7386-485A-8D2D-5AD928F6F78F}
+		{0E30ABFE-0929-4849-A322-B8DAE9AD13C5} = {002E5F7D-7386-485A-8D2D-5AD928F6F78F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {44E39BF6-9603-4CAD-91EB-F5F61B8970D6}
+	EndGlobalSection
+EndGlobal
