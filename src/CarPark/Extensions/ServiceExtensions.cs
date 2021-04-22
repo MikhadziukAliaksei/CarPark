@@ -1,5 +1,7 @@
-﻿using CarPark.Contracts.Interfaces;
+﻿using CarPark.Bll.Services;
+using CarPark.Contracts.Interfaces;
 using CarPark.Contracts.Interfaces.Logger;
+using CarPark.Contracts.Services;
 using CarPark.Entities.Context;
 using CarPark.LoggerService;
 using CarPark.Repository.Repositories;
@@ -30,6 +32,11 @@ namespace CarPark.Extensions
 
         public static void ConfigureRepositoryManager(this IServiceCollection services) =>
             services.AddScoped<IRepositoryManager, RepositoryManager>();
+
+        public static void ConfigureServices(this IServiceCollection services)
+        {
+            services.AddScoped<ICarService, CarService>();
+        }
             
     }
 }

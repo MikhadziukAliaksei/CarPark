@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\CarPark.Bll\CarPark.Bll.csproj" />
     <ProjectReference Include="..\..\CarPark.LoggerService\CarPark.LoggerService.csproj" />
     <ProjectReference Include="..\CarPark.Contracts\CarPark.Contracts.csproj" />
     <ProjectReference Include="..\CarPark.Entities\CarPark.Entities.csproj" />

@@ -17,6 +17,8 @@ namespace CarPark.Entities.Models
 
         public int ClientId { get; set; }
 
-        public ICollection<Car> Cars { get; set; }
+        public int CarId { get; set; }
+
+        public Car Car  { get; set; }
     }
 }

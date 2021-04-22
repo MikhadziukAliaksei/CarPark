@@ -1,4 +1,5 @@
-﻿using CarPark.Entities.Models;
+﻿using CarPark.Entities.Configuration;
+using CarPark.Entities.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace CarPark.Entities.Context
@@ -27,10 +28,15 @@ namespace CarPark.Entities.Context
         {
             base.OnModelCreating(builder);
 
+            builder.ApplyConfiguration(new ManufacturerCountryConfiguration());
+            builder.ApplyConfiguration(new CarSpecificationConfiguration());
+            builder.ApplyConfiguration(new CarConfiguration());
+
             builder.Entity<Car>()
                 .HasOne<CarSpecification>(item => item.CarSpecification)
                 .WithOne(item => item.Car)
                 .HasForeignKey<CarSpecification>(item => item.CarId);
+
         }
     }
 

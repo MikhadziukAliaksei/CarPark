@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarPark.Repository", "src\C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarPark.Contracts", "src\CarPark.Contracts\CarPark.Contracts.csproj", "{0E30ABFE-0929-4849-A322-B8DAE9AD13C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarPark.LoggerService", "CarPark.LoggerService\CarPark.LoggerService.csproj", "{51035B34-62D0-4A90-86C1-608411ED2140}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarPark.LoggerService", "CarPark.LoggerService\CarPark.LoggerService.csproj", "{51035B34-62D0-4A90-86C1-608411ED2140}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarPark.Bll", "CarPark.Bll\CarPark.Bll.csproj", "{2624E12F-F54C-497B-8328-F9B6491429D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,10 @@ Global
 		{51035B34-62D0-4A90-86C1-608411ED2140}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51035B34-62D0-4A90-86C1-608411ED2140}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51035B34-62D0-4A90-86C1-608411ED2140}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2624E12F-F54C-497B-8328-F9B6491429D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2624E12F-F54C-497B-8328-F9B6491429D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2624E12F-F54C-497B-8328-F9B6491429D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2624E12F-F54C-497B-8328-F9B6491429D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +59,7 @@ Global
 		{91BFE222-DE24-437F-9480-EF3C611799EE} = {002E5F7D-7386-485A-8D2D-5AD928F6F78F}
 		{0E30ABFE-0929-4849-A322-B8DAE9AD13C5} = {002E5F7D-7386-485A-8D2D-5AD928F6F78F}
 		{51035B34-62D0-4A90-86C1-608411ED2140} = {002E5F7D-7386-485A-8D2D-5AD928F6F78F}
+		{2624E12F-F54C-497B-8328-F9B6491429D0} = {002E5F7D-7386-485A-8D2D-5AD928F6F78F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {44E39BF6-9603-4CAD-91EB-F5F61B8970D6}

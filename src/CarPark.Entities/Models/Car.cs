@@ -1,4 +1,6 @@
-﻿namespace CarPark.Entities.Models
+﻿using System.Collections.Generic;
+
+namespace CarPark.Entities.Models
 {
     public class Car
     {
@@ -24,8 +26,6 @@
         
         public CarSpecification CarSpecification { get; set; } 
 
-        public Order Order { get; set; }
-
-        public int OrderId { get; set; }
+        public ICollection<Order> Orders { get; set; }
     }
 }
