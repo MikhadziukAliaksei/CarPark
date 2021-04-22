@@ -1,4 +1,5 @@
-﻿using CarPark.Bll.Services;
+﻿using CarPark.Api.Mapper;
+using CarPark.Bll.Services;
 using CarPark.Contracts.Interfaces;
 using CarPark.Contracts.Interfaces.Logger;
 using CarPark.Contracts.Services;
@@ -37,6 +38,8 @@ namespace CarPark.Extensions
         {
             services.AddScoped<ICarService, CarService>();
         }
-            
+
+        public static void ConfigureMapper(this IServiceCollection services) =>
+            services.AddAutoMapper(typeof(MappingProfile));
     }
 }

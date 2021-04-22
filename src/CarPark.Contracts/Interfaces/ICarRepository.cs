@@ -7,5 +7,9 @@ namespace CarPark.Contracts.Interfaces
     public interface ICarRepository
     {
         IEnumerable<Car> GetCars(bool trackChanges);
+
+        Car GetCar(int id, bool trackChanges);
+
+        void CreateCar(Car car);
     }
 }

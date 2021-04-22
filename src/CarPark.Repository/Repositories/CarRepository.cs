@@ -13,9 +13,18 @@ namespace CarPark.Repository.Repositories
         {
         }
 
+        public void CreateCar(Car car) => Create(car);
+
+        public Car GetCar(int id, bool trackChanges) =>
+            FindByConditions(item => item.Id.Equals(id), trackChanges)
+            .SingleOrDefault();
+             
+        
+
         public IEnumerable<Car> GetCars(bool trackChanges) =>
             GetAll(trackChanges)
             .OrderBy(item => item.Mark)
             .ToList();
+
     }
 }
