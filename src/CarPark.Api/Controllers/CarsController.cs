@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using CarPark.Contracts.Interfaces;
 using CarPark.Contracts.Interfaces.Logger;
 using CarPark.Contracts.Services;
 using CarPark.Entities.Models;
