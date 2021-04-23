@@ -7,6 +7,7 @@ namespace CarPark.Repository.Repositories
     {
         private ApplicationContext _applicationContext;
         private ICarRepository _carRepository;
+        private ICarSpecificationRepository _specificationRepository;
 
         public RepositoryManager(ApplicationContext applicationContext)
         {
@@ -19,6 +20,15 @@ namespace CarPark.Repository.Repositories
             {
                 return _carRepository ??
                     (_carRepository = new CarRepository(_applicationContext));
+            }
+        }
+
+        public ICarSpecificationRepository CarSpecification
+        {
+            get
+            {
+                return _specificationRepository ??
+                    (_specificationRepository = new CarSpecificationRepository(_applicationContext));
             }
         }
 

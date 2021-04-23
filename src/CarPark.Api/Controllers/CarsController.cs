@@ -13,14 +13,19 @@ namespace CarPark.Api.Controllers
     public class CarsController : ControllerBase
     {
         private readonly ICarService _carService;
+        private readonly ICarSpecificationService _specificationService;
         private readonly ILoggerManager _logger;
         private readonly IMapper _mapper;
 
-        public CarsController(ICarService carService, ILoggerManager logger, IMapper mapper)
+        public CarsController(ICarService carService,
+            ILoggerManager logger,
+            IMapper mapper,
+            ICarSpecificationService specificationService)
         {
             _carService = carService;
             _logger = logger;
             _mapper = mapper;
+            _specificationService = specificationService;
         }
 
         [HttpGet]
@@ -66,6 +71,21 @@ namespace CarPark.Api.Controllers
 
             var carToReturn = _mapper.Map<CarDto>(carEntity);
             return CreatedAtRoute("CarById", new { id = carToReturn.Id }, carToReturn);
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteCar(int id) 
+        {
+            var car = _carService.GetCar(id, trackChanges: false);
+            if (car == null)
+            {
+                _logger.LogInfo($"Car with id: {id} doesn't exist in the database");
+                return NotFound();
+            }
+
+            _carService.DeleteCar(car);
+
+            return NoContent();
         }
     }
 }

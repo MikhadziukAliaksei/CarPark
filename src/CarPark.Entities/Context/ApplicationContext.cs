@@ -35,7 +35,9 @@ namespace CarPark.Entities.Context
             builder.Entity<Car>()
                 .HasOne<CarSpecification>(item => item.CarSpecification)
                 .WithOne(item => item.Car)
-                .HasForeignKey<CarSpecification>(item => item.CarId);
+                .HasForeignKey<CarSpecification>(item => item.CarId)
+                .OnDelete(DeleteBehavior.Cascade)
+                .IsRequired();
 
         }
     }

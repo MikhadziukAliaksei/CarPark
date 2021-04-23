@@ -21,6 +21,12 @@ namespace CarPark.Bll.Services
             _repositoryManager.Save();
         }
 
+        public void DeleteCar(Car car)
+        {
+            _repositoryManager.Car.DeleteCar(car);
+            _repositoryManager.Save();
+        }
+
         public Car GetCar(int id, bool trackChanges)
         {
             return _repositoryManager.Car.GetCar(id, trackChanges);

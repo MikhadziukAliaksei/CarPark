@@ -1,4 +1,6 @@
-﻿namespace CarPark.EntitiesDto
+﻿using CarPark.EntitiesDto.CarSpecification;
+
+namespace CarPark.EntitiesDto
 {
     public class CarForCreate
     {
@@ -18,5 +20,7 @@
         public int YearOfIssue { get; set; }
 
         public int CarSpecificationId { get; set; }
+
+        public SpecificationForCarDto CarSpecification { get; set; }
     }
 }

@@ -10,5 +10,9 @@ namespace CarPark.Contracts.Services
         Car GetCar(int id, bool trackChanges);
 
         void CreateCar(Car car);
+
+        void DeleteCar(Car car);
+
+        void UpdateCar(Car car);
     }
 }

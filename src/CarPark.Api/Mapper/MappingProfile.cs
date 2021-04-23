@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using CarPark.Entities.Models;
 using CarPark.EntitiesDto;
+using CarPark.EntitiesDto.CarSpecification;
 
 namespace CarPark.Api.Mapper
 {
@@ -10,6 +11,8 @@ namespace CarPark.Api.Mapper
         {
             CreateMap<CarDto, Car>().ReverseMap();
             CreateMap<CarForCreate, Car>().ReverseMap();
+            CreateMap<CarSpecificationDto, CarSpecification>().ReverseMap();
+            CreateMap<SpecificationForCarDto, CarSpecification>().ReverseMap();
         }
     }
 }
