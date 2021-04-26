@@ -3,6 +3,7 @@ using CarPark.Contracts.Interfaces.Logger;
 using CarPark.Contracts.Services;
 using CarPark.Entities.Models;
 using CarPark.EntitiesDto;
+using CarPark.EntitiesDto.Car;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -84,6 +85,28 @@ namespace CarPark.Api.Controllers
             }
 
             _carService.DeleteCar(car);
+
+            return NoContent();
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateCar(int id, [FromBody] CarForUpdate carForUpdate)
+        {
+            if (carForUpdate == null)
+            {
+                _logger.LogError("CarForUpdate object sent from client is null.");
+                return BadRequest("CarForUpdate object is null");
+            }
+
+            var carEntity = _carService.GetCar(id, true);
+
+            if (carEntity == null)
+            {
+                _logger.LogInfo($"Car with id: {id} doesn't exist in the database.");
+                return NotFound();
+            }
+            _mapper.Map(carForUpdate, carEntity);
+            _carService.UpdateCar();
 
             return NoContent();
         }

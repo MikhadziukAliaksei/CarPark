@@ -37,5 +37,10 @@ namespace CarPark.Bll.Services
             var cars = _repositoryManager.Car.GetCars(trackChanges);
             return cars;
         }
+
+        public void UpdateCar()
+        {
+            _repositoryManager.Save();
+        }
     }
 }

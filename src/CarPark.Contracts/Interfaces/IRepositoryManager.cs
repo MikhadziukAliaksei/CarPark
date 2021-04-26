@@ -4,6 +4,7 @@
     {
         ICarRepository Car { get; }
         ICarSpecificationRepository CarSpecification { get; }
+        IManufacturerRepository Manufacturer { get; }
         void Save();
     }
 }

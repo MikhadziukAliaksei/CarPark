@@ -38,6 +38,7 @@ namespace CarPark.Extensions
         {
             services.AddScoped<ICarService, CarService>();
             services.AddScoped<ICarSpecificationService, CarSpecificationsService>();
+            services.AddScoped<IManufacturerService, ManufacturerService>();
         }
 
         public static void ConfigureMapper(this IServiceCollection services) =>

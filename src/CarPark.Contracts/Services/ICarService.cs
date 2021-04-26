@@ -13,6 +13,6 @@ namespace CarPark.Contracts.Services
 
         void DeleteCar(Car car);
 
-        void UpdateCar(Car car);
+        void UpdateCar();
     }
 }
