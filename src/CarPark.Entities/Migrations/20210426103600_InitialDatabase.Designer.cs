@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarPark.Entities.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20210423111136_InitialDatabase")]
+    [Migration("20210426103600_InitialDatabase")]
     partial class InitialDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,6 +33,9 @@ namespace CarPark.Entities.Migrations
 
                     b.Property<string>("Color")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<int>("ManufacturerCountryId")
                         .HasColumnType("int");
@@ -64,6 +67,7 @@ namespace CarPark.Entities.Migrations
                             Id = 1,
                             CarSpecificationId = 1,
                             Color = "White",
+                            IsDeleted = false,
                             ManufacturerCountryId = 1,
                             Mark = "Audi",
                             Model = "RS7",
@@ -76,6 +80,7 @@ namespace CarPark.Entities.Migrations
                             Id = 2,
                             CarSpecificationId = 2,
                             Color = "Black",
+                            IsDeleted = false,
                             ManufacturerCountryId = 1,
                             Mark = "Audi",
                             Model = "A8",

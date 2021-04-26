@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CarPark.EntitiesDto\CarPark.EntitiesDto.csproj" />
     <ProjectReference Include="..\CarPark.Entities\CarPark.Entities.csproj" />
   </ItemGroup>
 

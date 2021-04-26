@@ -19,5 +19,7 @@
         public int YearOfIssue { get; set; }
 
         public int CarSpecificationId { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 }

@@ -21,5 +21,7 @@ namespace CarPark.EntitiesDto.Car
         public int CarSpecificationId { get; set; }
 
         public SpecificationForCarDto CarSpecification { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 }

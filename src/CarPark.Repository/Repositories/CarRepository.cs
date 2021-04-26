@@ -8,14 +8,20 @@ namespace CarPark.Repository.Repositories
 {
     public class CarRepository : RepositoryBase<Car>, ICarRepository
     {
-        public CarRepository(ApplicationContext applicationContext)
-            : base(applicationContext)
+        public CarRepository(ApplicationContext _applicationContext)
+            : base(_applicationContext)
         {
         }
 
         public void CreateCar(Car car) => Create(car);
 
-        public void DeleteCar(Car car) => Delete(car);
+        public void DeleteCar(int id, bool trackChanges)
+        {
+            var carEntity = GetCar(id, trackChanges);
+            carEntity.IsDeleted = true;
+            Save();
+        }
+
 
         public Car GetCar(int id, bool trackChanges) =>
             FindByConditions(item => item.Id.Equals(id), trackChanges)
@@ -25,6 +31,7 @@ namespace CarPark.Repository.Repositories
 
         public IEnumerable<Car> GetCars(bool trackChanges) =>
             GetAll(trackChanges)
+            .Where(item => !item.IsDeleted)
             .OrderBy(item => item.Mark)
             .ToList();
 

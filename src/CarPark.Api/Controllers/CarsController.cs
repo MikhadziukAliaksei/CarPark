@@ -84,7 +84,7 @@ namespace CarPark.Api.Controllers
                 return NotFound();
             }
 
-            _carService.DeleteCar(car);
+            _carService.DeleteCar(car, trackChanges: true);
 
             return NoContent();
         }

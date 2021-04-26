@@ -11,7 +11,7 @@ namespace CarPark.Contracts.Services
 
         void CreateCar(Car car);
 
-        void DeleteCar(Car car);
+        void DeleteCar(Car car, bool trackChanges);
 
         void UpdateCar();
     }

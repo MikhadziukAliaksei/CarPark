@@ -34,6 +34,11 @@ namespace CarPark.Repository.Repositories
             !trackChanges ?
             ApplicationContext.Set<Entity>().AsNoTracking() :
             ApplicationContext.Set<Entity>();
+
+        public void Save()
+        {
+            ApplicationContext.SaveChanges();
+        }
              
     }
 }

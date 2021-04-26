@@ -27,5 +27,7 @@ namespace CarPark.Entities.Models
         public CarSpecification CarSpecification { get; set; } 
 
         public ICollection<Order> Orders { get; set; }
+
+        public bool IsDeleted { get; set; } 
     }
 }

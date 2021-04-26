@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarPark.EntitiesDto", "src\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarPark.LoggerService", "src\CarPark.LoggerService\CarPark.LoggerService.csproj", "{620F4516-122D-488C-86F6-92D6EB544FC3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarPark.UserApi", "src\CarPark.UserApi\CarPark.UserApi.csproj", "{4CEBF972-4F39-4BB4-B71C-E06270854B7D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{620F4516-122D-488C-86F6-92D6EB544FC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{620F4516-122D-488C-86F6-92D6EB544FC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{620F4516-122D-488C-86F6-92D6EB544FC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CEBF972-4F39-4BB4-B71C-E06270854B7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CEBF972-4F39-4BB4-B71C-E06270854B7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CEBF972-4F39-4BB4-B71C-E06270854B7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CEBF972-4F39-4BB4-B71C-E06270854B7D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,6 +73,7 @@ Global
 		{77F925C3-E306-4FB2-A24C-A98F3E142591} = {002E5F7D-7386-485A-8D2D-5AD928F6F78F}
 		{4B0E8E55-3173-4F22-8218-32589A90DF64} = {002E5F7D-7386-485A-8D2D-5AD928F6F78F}
 		{620F4516-122D-488C-86F6-92D6EB544FC3} = {002E5F7D-7386-485A-8D2D-5AD928F6F78F}
+		{4CEBF972-4F39-4BB4-B71C-E06270854B7D} = {002E5F7D-7386-485A-8D2D-5AD928F6F78F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {44E39BF6-9603-4CAD-91EB-F5F61B8970D6}

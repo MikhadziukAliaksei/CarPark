@@ -1,6 +1,5 @@
 ﻿using CarPark.Entities.Models;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace CarPark.Contracts.Interfaces
 {
@@ -12,7 +11,7 @@ namespace CarPark.Contracts.Interfaces
 
         void CreateCar(Car car);
 
-        void DeleteCar(Car car);
+        void DeleteCar(int id, bool trackChanges);
 
         void UpdateCar(Car car);
     }

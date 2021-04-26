@@ -1,7 +1,6 @@
 ﻿using CarPark.Contracts.Interfaces;
 using CarPark.Contracts.Services;
 using CarPark.Entities.Models;
-using System;
 using System.Collections.Generic;
 
 namespace CarPark.Bll.Services
@@ -21,10 +20,9 @@ namespace CarPark.Bll.Services
             _repositoryManager.Save();
         }
 
-        public void DeleteCar(Car car)
+        public void DeleteCar(Car car, bool trackChanges)
         {
-            _repositoryManager.Car.DeleteCar(car);
-            _repositoryManager.Save();
+            _repositoryManager.Car.DeleteCar(car.Id, trackChanges);
         }
 
         public Car GetCar(int id, bool trackChanges)

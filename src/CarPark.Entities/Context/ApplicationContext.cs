@@ -1,10 +1,11 @@
 ﻿using CarPark.Entities.Configuration;
 using CarPark.Entities.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace CarPark.Entities.Context
 {
-    public class ApplicationContext : DbContext
+    public class ApplicationContext : IdentityDbContext
     {
         public ApplicationContext(DbContextOptions options)
             : base(options)
@@ -31,6 +32,7 @@ namespace CarPark.Entities.Context
             builder.ApplyConfiguration(new ManufacturerCountryConfiguration());
             builder.ApplyConfiguration(new CarSpecificationConfiguration());
             builder.ApplyConfiguration(new CarConfiguration());
+            builder.ApplyConfiguration(new RoleConfiguration());
 
             builder.Entity<Car>()
                 .HasOne<CarSpecification>(item => item.CarSpecification)

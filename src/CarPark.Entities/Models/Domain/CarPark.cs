@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using CarPark.Entities.Models;
 
 namespace CarPark.Entities.Models
 {

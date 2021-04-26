@@ -64,7 +64,8 @@ namespace CarPark.Entities.Migrations
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     ManufacturerCountryId = table.Column<int>(type: "int", nullable: false),
                     YearOfIssue = table.Column<int>(type: "int", nullable: false),
-                    CarSpecificationId = table.Column<int>(type: "int", nullable: false)
+                    CarSpecificationId = table.Column<int>(type: "int", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -142,13 +143,13 @@ namespace CarPark.Entities.Migrations
 
             migrationBuilder.InsertData(
                 table: "Cars",
-                columns: new[] { "Id", "CarSpecificationId", "Color", "ManufacturerCountryId", "Mark", "Model", "Price", "Quantity", "YearOfIssue" },
-                values: new object[] { 1, 1, "White", 1, "Audi", "RS7", 57000m, 2, 2016 });
+                columns: new[] { "Id", "CarSpecificationId", "Color", "IsDeleted", "ManufacturerCountryId", "Mark", "Model", "Price", "Quantity", "YearOfIssue" },
+                values: new object[] { 1, 1, "White", false, 1, "Audi", "RS7", 57000m, 2, 2016 });
 
             migrationBuilder.InsertData(
                 table: "Cars",
-                columns: new[] { "Id", "CarSpecificationId", "Color", "ManufacturerCountryId", "Mark", "Model", "Price", "Quantity", "YearOfIssue" },
-                values: new object[] { 2, 2, "Black", 1, "Audi", "A8", 12000m, 1, 2018 });
+                columns: new[] { "Id", "CarSpecificationId", "Color", "IsDeleted", "ManufacturerCountryId", "Mark", "Model", "Price", "Quantity", "YearOfIssue" },
+                values: new object[] { 2, 2, "Black", false, 1, "Audi", "A8", 12000m, 1, 2018 });
 
             migrationBuilder.InsertData(
                 table: "CarSpecifications",

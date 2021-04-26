@@ -32,6 +32,9 @@ namespace CarPark.Entities.Migrations
                     b.Property<string>("Color")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<int>("ManufacturerCountryId")
                         .HasColumnType("int");
 
@@ -62,6 +65,7 @@ namespace CarPark.Entities.Migrations
                             Id = 1,
                             CarSpecificationId = 1,
                             Color = "White",
+                            IsDeleted = false,
                             ManufacturerCountryId = 1,
                             Mark = "Audi",
                             Model = "RS7",
@@ -74,6 +78,7 @@ namespace CarPark.Entities.Migrations
                             Id = 2,
                             CarSpecificationId = 2,
                             Color = "Black",
+                            IsDeleted = false,
                             ManufacturerCountryId = 1,
                             Mark = "Audi",
                             Model = "A8",
