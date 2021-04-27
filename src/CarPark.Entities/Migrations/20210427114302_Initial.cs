@@ -49,6 +49,21 @@ namespace CarPark.Entities.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "CarAudits",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CarId = table.Column<int>(type: "int", nullable: false),
+                    Operation = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreateAt = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CarAudits", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "CarParks",
                 columns: table => new
                 {
@@ -286,12 +301,12 @@ namespace CarPark.Entities.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "de5618da-90ab-4410-9f41-278a16381248", "a1c23359-da04-4f66-aa7b-b5a933482679", "Manager", "MANAGER" });
+                values: new object[] { "1f15bc0f-3704-457f-a1a6-3777f54edd98", "3e3fe80a-ad81-4512-9e23-ae354cc4af5d", "Manager", "MANAGER" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "bf49ebe5-aad4-4ee3-8246-fd1b1629891c", "7cf9d06d-4a59-404e-bf04-04582da79109", "Administrator", "ADMINISTRATOR" });
+                values: new object[] { "92372ee4-a633-40c7-870d-fb44808f2a04", "703adb9f-12da-4b00-b4be-e5b171633bcd", "Administrator", "ADMINISTRATOR" });
 
             migrationBuilder.InsertData(
                 table: "ManufacturerCountries",
@@ -395,6 +410,9 @@ namespace CarPark.Entities.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "CarAudits");
 
             migrationBuilder.DropTable(
                 name: "CarSpecifications");

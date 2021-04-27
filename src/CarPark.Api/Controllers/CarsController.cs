@@ -60,6 +60,7 @@ namespace CarPark.Api.Controllers
             return Ok(car);
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult CreateCar([FromBody] CarForCreate car)
         {
@@ -68,7 +69,7 @@ namespace CarPark.Api.Controllers
                 _logger.LogError($"Car object sent from client is null");
                 return BadRequest("Car object is null");
             }
-
+           
             var carEntity = _mapper.Map<Car>(car);
             _carService.CreateCar(carEntity);
 

@@ -10,6 +10,9 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
+using System;
+using System.Text;
 
 namespace CarPark.Extensions
 {
@@ -47,6 +50,7 @@ namespace CarPark.Extensions
 
         public static void ConfigureJwtAuth(this IServiceCollection services)
         {
+            var secretKey = Environment.GetEnvironmentVariable("SECRET");
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
@@ -58,7 +62,8 @@ namespace CarPark.Extensions
                         ValidateAudience = true,
                         ValidAudience = "https://localhost:5001",
                         ValidateLifetime = true,
-
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
                     };
                 });
         }

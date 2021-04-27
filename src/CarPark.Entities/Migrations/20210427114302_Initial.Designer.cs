@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarPark.Entities.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20210427085634_Initial")]
+    [Migration("20210427114302_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,6 +20,27 @@ namespace CarPark.Entities.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.5")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("CarPark.Entities.Models.Audit.CarAudit", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CarId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreateAt")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Operation")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CarAudits");
+                });
 
             modelBuilder.Entity("CarPark.Entities.Models.Car", b =>
                 {
@@ -332,15 +353,15 @@ namespace CarPark.Entities.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "de5618da-90ab-4410-9f41-278a16381248",
-                            ConcurrencyStamp = "a1c23359-da04-4f66-aa7b-b5a933482679",
+                            Id = "1f15bc0f-3704-457f-a1a6-3777f54edd98",
+                            ConcurrencyStamp = "3e3fe80a-ad81-4512-9e23-ae354cc4af5d",
                             Name = "Manager",
                             NormalizedName = "MANAGER"
                         },
                         new
                         {
-                            Id = "bf49ebe5-aad4-4ee3-8246-fd1b1629891c",
-                            ConcurrencyStamp = "7cf9d06d-4a59-404e-bf04-04582da79109",
+                            Id = "92372ee4-a633-40c7-870d-fb44808f2a04",
+                            ConcurrencyStamp = "703adb9f-12da-4b00-b4be-e5b171633bcd",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
