@@ -6,6 +6,7 @@ using CarPark.Contracts.Services;
 using CarPark.Entities.Context;
 using CarPark.LoggerService;
 using CarPark.Repository.Repositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -43,5 +44,23 @@ namespace CarPark.Extensions
 
         public static void ConfigureMapper(this IServiceCollection services) =>
             services.AddAutoMapper(typeof(MappingProfile));
+
+        public static void ConfigureJwtAuth(this IServiceCollection services)
+        {
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.RequireHttpsMetadata = false;
+                    options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidIssuer = "CarParkApi",
+                        ValidateAudience = true,
+                        ValidAudience = "https://localhost:5001",
+                        ValidateLifetime = true,
+
+                    };
+                });
+        }
     }
 }

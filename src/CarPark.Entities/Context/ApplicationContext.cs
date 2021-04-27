@@ -1,11 +1,12 @@
 ﻿using CarPark.Entities.Configuration;
 using CarPark.Entities.Models;
+using CarPark.Entities.Models.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace CarPark.Entities.Context
 {
-    public class ApplicationContext : IdentityDbContext
+    public class ApplicationContext : IdentityDbContext<User>
     {
         public ApplicationContext(DbContextOptions options)
             : base(options)

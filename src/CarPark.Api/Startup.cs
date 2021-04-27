@@ -36,6 +36,9 @@ namespace CarPark
             services.ConfigureLoggerManager();
             services.ConfigureServices();
             services.ConfigureMapper();
+            services.AddAuthentication();
+            services.AddAuthorization();
+            services.ConfigureJwtAuth();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,6 +60,7 @@ namespace CarPark
             });
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

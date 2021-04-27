@@ -4,6 +4,7 @@ using CarPark.Contracts.Services;
 using CarPark.Entities.Models;
 using CarPark.EntitiesDto;
 using CarPark.EntitiesDto.Car;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -29,7 +30,8 @@ namespace CarPark.Api.Controllers
             _specificationService = specificationService;
         }
 
-        [HttpGet]
+        [Authorize]
+        [HttpGet( Name = "GetCars" )]
         public IActionResult GetCars()
         {
             try

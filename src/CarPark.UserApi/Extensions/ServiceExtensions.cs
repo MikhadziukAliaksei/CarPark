@@ -1,7 +1,13 @@
-﻿using CarPark.Entities.Context;
+﻿using CarPark.Contracts.Identity;
+using CarPark.Contracts.Interfaces.Logger;
+using CarPark.Entities.Context;
 using CarPark.Entities.Models.Identity;
+using CarPark.LoggerService;
+using CarPark.UserApi.Mapper;
+using CarPark.UserApi.Service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
@@ -53,5 +59,20 @@ namespace CarPark.UserApi.Extensions
                 };
             });
         }
+
+        public static void ConfigureAuthManager(this IServiceCollection services)
+        {
+            services.AddScoped<IAuthenticationManager, AuthenticationManager>();
+        }
+
+        public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration configuration) =>
+            services.AddDbContext<ApplicationContext>(options =>
+            options.UseSqlServer(configuration.GetConnectionString("sqlConnection")));
+
+        public static void ConfigureLoggerManager(this IServiceCollection services) =>
+            services.AddScoped<ILoggerManager, LoggerManager>();
+
+        public static void ConfigureMapper(this IServiceCollection services) =>
+            services.AddAutoMapper(typeof(MapperProfile));
     }
 }

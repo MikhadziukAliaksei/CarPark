@@ -22,6 +22,10 @@ namespace CarPark.UserApi
         {
 
             services.AddControllers();
+            services.ConfigureSqlContext(Configuration);
+            services.ConfigureLoggerManager();
+            services.ConfigureMapper();
+            services.ConfigureAuthManager();
             services.AddAuthentication();
             services.ConfigureIdentity();
             services.ConfigureJWT(Configuration);

@@ -26,6 +26,8 @@ namespace CarPark.Entities.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SecondName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -284,12 +286,12 @@ namespace CarPark.Entities.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "2f6c8697-3cc5-4675-a384-4cd939a8d85b", "912ce4a1-2b1f-48ba-a2b0-6e2b56290bb3", "Manager", "MANAGER" });
+                values: new object[] { "de5618da-90ab-4410-9f41-278a16381248", "a1c23359-da04-4f66-aa7b-b5a933482679", "Manager", "MANAGER" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "6f06c7fc-6a4f-4226-a678-19743bf8134d", "596297d4-6d9a-4731-a1d8-d3af55258631", "Administrator", "ADMINISTRATOR" });
+                values: new object[] { "bf49ebe5-aad4-4ee3-8246-fd1b1629891c", "7cf9d06d-4a59-404e-bf04-04582da79109", "Administrator", "ADMINISTRATOR" });
 
             migrationBuilder.InsertData(
                 table: "ManufacturerCountries",
