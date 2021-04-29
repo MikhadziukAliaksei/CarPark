@@ -1,0 +1,36 @@
+version: '3.4'
+
+services:
+  carpark.api:
+    image: ${DOCKER_REGISTRY-}carparkapi
+    environment:
+      SECRET: CarParkSecretKet
+    ports:
+      - "5005:80"
+      - "5004:443"
+    build:
+      context: .
+      dockerfile: src/CarPark.Api/Dockerfile
+    depends_on:
+            - db
+  carpark.userapi:
+    image: ${DOCKER_REGISTRY-}carparkuserapi
+    environment:
+      SECRET: CarParkSecretKet
+    ports:
+       - "5002:80"
+       - "5001:443"
+    build:
+      context: .
+      dockerfile: src/CarPark.UserApi/Dockerfile
+    depends_on:
+            - db
+  db:
+        container_name: db
+        image: "mcr.microsoft.com/mssql/server"
+        ports:
+          - "1433:1433" 
+        environment:
+            SA_PASSWORD: "Qwerty1234&"
+            ACCEPT_EULA: "Y"
+

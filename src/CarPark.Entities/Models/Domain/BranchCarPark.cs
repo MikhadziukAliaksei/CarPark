@@ -3,7 +3,7 @@ using CarPark.Entities.Models;
 
 namespace CarPark.Entities.Models
 {
-    public class CarPark
+    public class BranchCarPark
     {
         public int Id { get; set; }
 

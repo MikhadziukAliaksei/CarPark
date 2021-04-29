@@ -10,6 +10,7 @@ namespace CarPark.Repository.Repositories
         private ICarSpecificationRepository _specificationRepository;
         private IManufacturerRepository _manufacturerRepository;
         private IOrderRepository _orderRepository;
+        private ICarParkRepository _carParkRepository;
 
         public RepositoryManager(ApplicationContext applicationContext)
         {
@@ -49,6 +50,15 @@ namespace CarPark.Repository.Repositories
             {
                 return _orderRepository ??
                     (_orderRepository = new OrderRepository(_applicationContext));
+            }
+        }
+
+        public ICarParkRepository CarPark
+        {
+            get
+            {
+                return _carParkRepository ??
+                    (_carParkRepository = new CarParkRepository(_applicationContext));
             }
         }
 

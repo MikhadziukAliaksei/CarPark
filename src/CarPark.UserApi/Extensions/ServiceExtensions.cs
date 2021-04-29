@@ -67,7 +67,7 @@ namespace CarPark.UserApi.Extensions
 
         public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration configuration) =>
             services.AddDbContext<ApplicationContext>(options =>
-            options.UseSqlServer(configuration.GetConnectionString("sqlConnection")));
+            options.UseSqlServer(configuration.GetConnectionString("sqlDockerConnection")));
 
         public static void ConfigureLoggerManager(this IServiceCollection services) =>
             services.AddScoped<ILoggerManager, LoggerManager>();

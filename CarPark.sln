@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarPark.UserApi", "src\CarP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarPark.UnitTests", "test\CarPark.UnitTests\CarPark.UnitTests.csproj", "{5A892C43-9441-4D30-A35B-15B2A401B361}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{346A1427-44B5-4B7F-BD4A-4732D1D48865}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{5A892C43-9441-4D30-A35B-15B2A401B361}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A892C43-9441-4D30-A35B-15B2A401B361}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A892C43-9441-4D30-A35B-15B2A401B361}.Release|Any CPU.Build.0 = Release|Any CPU
+		{346A1427-44B5-4B7F-BD4A-4732D1D48865}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{346A1427-44B5-4B7F-BD4A-4732D1D48865}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{346A1427-44B5-4B7F-BD4A-4732D1D48865}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{346A1427-44B5-4B7F-BD4A-4732D1D48865}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

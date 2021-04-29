@@ -10,7 +10,7 @@ namespace CarPark.Entities.Models
 
         public int CarParkId { get; set; }
 
-        public CarPark CarPark { get; set; }
+        public BranchCarPark CarPark { get; set; }
 
         public Client Client { get; set; }
 

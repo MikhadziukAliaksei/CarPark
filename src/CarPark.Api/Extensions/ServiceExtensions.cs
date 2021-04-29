@@ -33,7 +33,7 @@ namespace CarPark.Extensions
 
         public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration configuration) =>
             services.AddDbContext<ApplicationContext>(options =>
-            options.UseSqlServer(configuration.GetConnectionString("sqlConnection")));
+            options.UseSqlServer(configuration.GetConnectionString("sqlDockerConnection")));
 
         public static void ConfigureRepositoryManager(this IServiceCollection services) =>
             services.AddScoped<IRepositoryManager, RepositoryManager>();

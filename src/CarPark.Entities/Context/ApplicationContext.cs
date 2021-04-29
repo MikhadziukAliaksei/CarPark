@@ -17,7 +17,7 @@ namespace CarPark.Entities.Context
 
         public DbSet<Car> Cars { get; set; }
 
-        public DbSet<CarPark.Entities.Models.CarPark> CarParks { get; set; }
+        public DbSet<CarPark.Entities.Models.BranchCarPark> CarParks { get; set; }
 
         public DbSet<CarSpecification> CarSpecifications { get; set; }
 
