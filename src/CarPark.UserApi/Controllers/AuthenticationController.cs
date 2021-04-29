@@ -3,8 +3,10 @@ using CarPark.Contracts.Identity;
 using CarPark.Contracts.Interfaces.Logger;
 using CarPark.Entities.Models.Identity;
 using CarPark.EntitiesDto.Identity;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 using System.Threading.Tasks;
 
 namespace CarPark.UserApi.Controllers
@@ -30,6 +32,10 @@ namespace CarPark.UserApi.Controllers
         }
 
         [HttpPost]
+        [SwaggerResponse(StatusCodes.Status201Created)]
+        [SwaggerResponse(StatusCodes.Status500InternalServerError)]
+        [SwaggerResponse(StatusCodes.Status400BadRequest)]
+        [SwaggerOperation(Summary = "Register new user")]
         public async Task<IActionResult> Register([FromBody] UserForRegisterDto userDto)
         {
             var user = _mapper.Map<User>(userDto);
@@ -51,6 +57,10 @@ namespace CarPark.UserApi.Controllers
         }
 
         [HttpPost("login")]
+        [SwaggerResponse(StatusCodes.Status200OK)]
+        [SwaggerResponse(StatusCodes.Status500InternalServerError)]
+        [SwaggerResponse(StatusCodes.Status401Unauthorized)]
+        [SwaggerOperation(Summary = "Register new user")]
         public async Task<IActionResult> Authenticate([FromBody] UserForAuthenticationDto user)
         {
             if (!await _authenticationManager.ValidateUser(user))

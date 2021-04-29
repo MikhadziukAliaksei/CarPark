@@ -3,7 +3,9 @@ using CarPark.Contracts.Interfaces.Logger;
 using CarPark.Contracts.Services;
 using CarPark.Entities.Models;
 using CarPark.EntitiesDto.CarSpecification;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace CarPark.Api.Controllers
 {
@@ -28,6 +30,10 @@ namespace CarPark.Api.Controllers
         }
 
         [HttpPost]
+        [SwaggerResponse(StatusCodes.Status200OK)]
+        [SwaggerResponse(StatusCodes.Status404NotFound)]
+        [SwaggerResponse(StatusCodes.Status400BadRequest)]
+        [SwaggerOperation(Summary = "Create specification for car")]
         public IActionResult CreateSpecificationForCar([FromBody] SpecificationForCarDto specificationForCar, int carId)
         {
             if (specificationForCar == null)
@@ -51,6 +57,9 @@ namespace CarPark.Api.Controllers
         }
 
         [HttpGet("{id}", Name = "GetSpecificationForCar")]
+        [SwaggerResponse(StatusCodes.Status200OK)]
+        [SwaggerResponse(StatusCodes.Status404NotFound)]
+        [SwaggerOperation(Summary = "Get car specification  by car id")]
         public IActionResult GetCarSpecification(int carId, int id)
         {
             var car = _carService.GetCar(carId, false);

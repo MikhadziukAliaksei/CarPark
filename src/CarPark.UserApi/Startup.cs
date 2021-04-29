@@ -31,6 +31,7 @@ namespace CarPark.UserApi
             services.ConfigureJWT(Configuration);
             services.AddSwaggerGen(c =>
             {
+                c.EnableAnnotations();
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CarPark.UserApi", Version = "v1" });
             });
         }

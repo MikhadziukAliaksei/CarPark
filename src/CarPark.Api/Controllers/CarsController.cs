@@ -5,11 +5,14 @@ using CarPark.Entities.Models;
 using CarPark.EntitiesDto;
 using CarPark.EntitiesDto.Car;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 using System;
 
 namespace CarPark.Api.Controllers
 {
+    [Produces("application/json")]
     [Route("api/cars")]
     [ApiController]
     public class CarsController : ControllerBase
@@ -32,6 +35,10 @@ namespace CarPark.Api.Controllers
 
         [Authorize]
         [HttpGet( Name = "GetCars" )]
+        [SwaggerResponse(StatusCodes.Status200OK)]
+        [SwaggerResponse(StatusCodes.Status500InternalServerError)]
+        [SwaggerResponse(StatusCodes.Status401Unauthorized)]
+        [SwaggerOperation(Summary = "Get cars without  deleted car")]
         public IActionResult GetCars()
         {
             try
@@ -49,6 +56,8 @@ namespace CarPark.Api.Controllers
         }
 
         [HttpGet("{id}", Name = "CarById")]
+        [SwaggerResponse(StatusCodes.Status200OK)]
+        [SwaggerOperation(Summary = "Get car by id")]
         public IActionResult GetCar(int id)
         {
             var car = _carService.GetCar(id, trackChanges: false);
@@ -60,8 +69,12 @@ namespace CarPark.Api.Controllers
             return Ok(car);
         }
 
+
+       
         [Authorize]
         [HttpPost]
+        [SwaggerResponse(StatusCodes.Status201Created)]
+        [SwaggerOperation(Summary = "Create new car")]
         public IActionResult CreateCar([FromBody] CarForCreate car)
         {
             if (car == null)
@@ -78,6 +91,9 @@ namespace CarPark.Api.Controllers
         }
 
         [HttpDelete("{id}")]
+        [SwaggerResponse(StatusCodes.Status204NoContent)]
+        [SwaggerResponse(StatusCodes.Status404NotFound)]
+        [SwaggerOperation(Summary = "Delete car ")]
         public IActionResult DeleteCar(int id) 
         {
             var car = _carService.GetCar(id, trackChanges: false);
@@ -93,6 +109,10 @@ namespace CarPark.Api.Controllers
         }
 
         [HttpPut("{id}")]
+        [SwaggerResponse(StatusCodes.Status400BadRequest)]
+        [SwaggerResponse(StatusCodes.Status404NotFound)]
+        [SwaggerResponse(StatusCodes.Status204NoContent)]
+        [SwaggerOperation(Summary = "Update car")]
         public IActionResult UpdateCar(int id, [FromBody] CarForUpdate carForUpdate)
         {
             if (carForUpdate == null)

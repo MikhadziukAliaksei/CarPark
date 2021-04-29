@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using NLog;
+using System.Collections.Generic;
 using System.IO;
 
 namespace CarPark
@@ -28,7 +29,31 @@ namespace CarPark
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
+                c.EnableAnnotations();
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CarPark", Version = "v1" });
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    In = ParameterLocation.Header,
+                    Description = "Place to add jwt",
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "Bearer" 
+                });
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement()
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new  OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            },
+                            Name = "Bearer",
+                        },
+                        new List<string>()
+                    }
+                });
             });
             services.ConfigureSqlContext(Configuration);
             services.ConfigureCors();
@@ -49,6 +74,8 @@ namespace CarPark
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CarPark v1"));
+
+
             }
 
             app.UseHttpsRedirection();

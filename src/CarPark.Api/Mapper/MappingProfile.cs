@@ -4,6 +4,7 @@ using CarPark.EntitiesDto;
 using CarPark.EntitiesDto.Car;
 using CarPark.EntitiesDto.CarSpecification;
 using CarPark.EntitiesDto.Manufacturer;
+using CarPark.EntitiesDto.Order;
 
 namespace CarPark.Api.Mapper
 {
@@ -21,6 +22,10 @@ namespace CarPark.Api.Mapper
             CreateMap<ManufacturerDto, ManufacturerCountry>().ReverseMap();
             CreateMap<ManufacturerForCreateDto, ManufacturerCountry>().ReverseMap();
             CreateMap<ManufacturerForUpdateDto, ManufacturerCountry>().ReverseMap();
+
+            CreateMap<OrderDto, Order>().ReverseMap();
+            CreateMap<OrderForCreateDto, Order>().ReverseMap();
+            CreateMap<OrderForUpdateDto, Order>().ReverseMap();
         }
     }
 }

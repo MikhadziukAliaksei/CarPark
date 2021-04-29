@@ -3,7 +3,9 @@ using CarPark.Contracts.Interfaces.Logger;
 using CarPark.Contracts.Services;
 using CarPark.Entities.Models;
 using CarPark.EntitiesDto.Order;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 using System;
 
 namespace CarPark.Api.Controllers
@@ -24,6 +26,9 @@ namespace CarPark.Api.Controllers
         }
 
         [HttpGet]
+        [SwaggerResponse(StatusCodes.Status200OK)]
+        [SwaggerResponse(StatusCodes.Status500InternalServerError)]
+        [SwaggerOperation(Summary = "Get orders list")]
         public IActionResult GetOrders()
         {
             try
@@ -39,6 +44,9 @@ namespace CarPark.Api.Controllers
         }
 
         [HttpGet("{id}", Name = "OrderById")]
+        [SwaggerResponse(StatusCodes.Status200OK)]
+        [SwaggerResponse(StatusCodes.Status404NotFound)]
+        [SwaggerOperation(Summary = "Get order by id")]
         public IActionResult GetOrder(int id)
         {
             var order = _orderService.GetOrder(id, trackChanges: false);
@@ -51,6 +59,9 @@ namespace CarPark.Api.Controllers
         }
 
         [HttpPost]
+        [SwaggerResponse(StatusCodes.Status201Created)]
+        [SwaggerResponse(StatusCodes.Status400BadRequest)]
+        [SwaggerOperation(Summary = "Create new user order")]
         public IActionResult CreateOrder([FromBody] OrderForCreateDto order)
         {
             if (order == null)
@@ -67,6 +78,9 @@ namespace CarPark.Api.Controllers
         }
 
         [HttpDelete("{id}")]
+        [SwaggerResponse(StatusCodes.Status204NoContent)]
+        [SwaggerResponse(StatusCodes.Status404NotFound)]
+        [SwaggerOperation(Summary = "Delete order  ")]
         public IActionResult DeleteOrder(int id)
         {
             var order = _orderService.GetOrder(id, trackChanges: false);
@@ -82,6 +96,10 @@ namespace CarPark.Api.Controllers
         }
 
         [HttpPut("{id}")]
+        [SwaggerResponse(StatusCodes.Status400BadRequest)]
+        [SwaggerResponse(StatusCodes.Status404NotFound)]
+        [SwaggerResponse(StatusCodes.Status204NoContent)]
+        [SwaggerOperation(Summary = "Update user order")]
         public IActionResult UpdateOrder(int id, [FromBody] OrderForUpdateDto updateForUpdate)
         {
             if (updateForUpdate == null)

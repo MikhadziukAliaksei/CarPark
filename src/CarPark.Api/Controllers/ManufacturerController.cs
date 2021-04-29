@@ -5,6 +5,7 @@ using CarPark.Entities.Models;
 using CarPark.EntitiesDto.Manufacturer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,9 @@ namespace CarPark.Api.Controllers
         }
 
         [HttpGet]
+        [SwaggerResponse(StatusCodes.Status200OK)]
+        [SwaggerResponse(StatusCodes.Status500InternalServerError)]
+        [SwaggerOperation(Summary = "Get manufacturers list")]
         public IActionResult GetManufacturers()
         {
             try
@@ -43,6 +47,9 @@ namespace CarPark.Api.Controllers
         }
 
         [HttpGet("{id}", Name = "ManufacturerById")]
+        [SwaggerResponse(StatusCodes.Status200OK)]
+        [SwaggerResponse(StatusCodes.Status404NotFound)]
+        [SwaggerOperation(Summary = "Get manufacturer country by id")]
         public IActionResult GetManufacturer(int id)
         {
             var manufacturer = _manufacturerService.GetManufacturer(id, trackChanges: false);
@@ -55,6 +62,9 @@ namespace CarPark.Api.Controllers
         }
 
         [HttpPost]
+        [SwaggerResponse(StatusCodes.Status201Created)]
+        [SwaggerResponse(StatusCodes.Status400BadRequest)]
+        [SwaggerOperation(Summary = "Create new manufacturer country")]
         public IActionResult CreateManufacturer([FromBody] ManufacturerForCreateDto manufacturer)
         {
             if (manufacturer == null)
@@ -71,6 +81,9 @@ namespace CarPark.Api.Controllers
         }
 
         [HttpDelete("{id}")]
+        [SwaggerResponse(StatusCodes.Status204NoContent)]
+        [SwaggerResponse(StatusCodes.Status404NotFound)]
+        [SwaggerOperation(Summary = "Delete manufacturer country ")]
         public IActionResult DeleteManufacturer(int id)
         {
             var manufacturer = _manufacturerService.GetManufacturer(id, trackChanges: false);
@@ -86,6 +99,10 @@ namespace CarPark.Api.Controllers
         }
 
         [HttpPut("{id}")]
+        [SwaggerResponse(StatusCodes.Status400BadRequest)]
+        [SwaggerResponse(StatusCodes.Status404NotFound)]
+        [SwaggerResponse(StatusCodes.Status204NoContent)]
+        [SwaggerOperation(Summary = "Update manufacturer country")]
         public IActionResult UpdateManufacturer(int id, [FromBody] ManufacturerForUpdateDto manufacturerForUpdate)
         {
             if (manufacturerForUpdate == null)
