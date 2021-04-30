@@ -1,20 +1,62 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+trigger: 
+  branches:
+    -main
+    -dev
+  paths:
+    exclude:
+    - '*.yml'
 
-trigger:
-- dev
+variables:
+  vmImageName: 'windows-latest'
+  bdxc.version: '4.0.0'
 
-pool:
-  vmImage: ubuntu-latest
+stages:
+  - stage: Build
+    displayName: Build stage
+  
+    jobs:  
+    - job: Build
+      pool:
+        vmImage: $(vmImageName)
+      steps:
+      - task: Assembly-Info-NetCore@2
+        inputs:
+          Path: '$(Build.SourcesDirectory)'
+          FileNames: '**/*.csproj'
+          InsertAttributes: false
+          FileEncoding: 'auto'
+          WriteBOM: false
+          VersionNumber: '$(bdxc.version).$(Build.BuildID)'
+          FileVersionNumber: '$(bdxc.version).$(Build.BuildID)'
+          InformationalVersion: '$(bdxc.version).$(Build.BuildID)'
+          PackageVersion: '$(bdxc.version).$(Build.BuildID)'
+          LogLevel: 'verbose'
+          FailOnWarning: false
+          DisableTelemetry: false
+          
+      - task: DotNetCoreCLI@2
+        displayName: 'Restore paсkages'
+        inputs:
+          command: 'restore'
+          projects: '**/*.csproj'
 
-variables: 
-  buildConfiguration : 'Develop'
+      - task: DotNetCoreCLI@2
+        displayName: 'Build projects'
+        inputs:
+          command: 'build'
+          projects: '**/*.csproj'
 
-steps:
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'build'
-- script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'dotnet build $(buildConfiguration)'
+      - task: DotNetCoreCLI@2
+        displayName: 'Publish projects'
+        inputs:
+          command: publish
+          publishWebProjects: False
+          projects: '**/*.csproj'
+          arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+          zipAfterPublish: True
+
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publish artifacts'
+        inputs:
+          pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
+          artifactName: 'drop'
