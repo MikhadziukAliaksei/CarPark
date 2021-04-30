@@ -20,20 +20,6 @@ stages:
       pool:
         vmImage: $(vmImageName)
       steps:
-      - task: Assembly-Info-NetCore@2
-        inputs:
-          Path: '$(Build.SourcesDirectory)'
-          FileNames: '**/*.csproj'
-          InsertAttributes: false
-          FileEncoding: 'auto'
-          WriteBOM: false
-          VersionNumber: '$(bdxc.version).$(Build.BuildID)'
-          FileVersionNumber: '$(bdxc.version).$(Build.BuildID)'
-          InformationalVersion: '$(bdxc.version).$(Build.BuildID)'
-          PackageVersion: '$(bdxc.version).$(Build.BuildID)'
-          LogLevel: 'verbose'
-          FailOnWarning: false
-          DisableTelemetry: false
           
       - task: DotNetCoreCLI@2
         displayName: 'Restore paсkages'
