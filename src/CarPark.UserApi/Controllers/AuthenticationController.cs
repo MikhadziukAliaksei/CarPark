@@ -31,7 +31,7 @@ namespace CarPark.UserApi.Controllers
             _authenticationManager = authenticationManager;
         }
 
-        [HttpPost]
+        [HttpPost("register")]
         [SwaggerResponse(StatusCodes.Status201Created)]
         [SwaggerResponse(StatusCodes.Status500InternalServerError)]
         [SwaggerResponse(StatusCodes.Status400BadRequest)]

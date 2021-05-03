@@ -29,6 +29,7 @@ namespace CarPark.UserApi
             services.AddAuthentication();
             services.ConfigureIdentity();
             services.ConfigureJWT(Configuration);
+            services.ConfigureCors();
             services.AddSwaggerGen(c =>
             {
                 c.EnableAnnotations();
@@ -45,7 +46,7 @@ namespace CarPark.UserApi
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CarPark.UserApi v1"));
             }
-
+            app.UseCors("CorsPolicy");
             app.UseHttpsRedirection();
 
             app.UseRouting();
