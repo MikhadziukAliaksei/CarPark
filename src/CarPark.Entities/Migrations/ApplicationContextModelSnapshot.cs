@@ -40,6 +40,24 @@ namespace CarPark.Entities.Migrations
                     b.ToTable("CarAudits");
                 });
 
+            modelBuilder.Entity("CarPark.Entities.Models.BranchCarPark", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CarParks");
+                });
+
             modelBuilder.Entity("CarPark.Entities.Models.Car", b =>
                 {
                     b.Property<int>("Id")
@@ -107,24 +125,6 @@ namespace CarPark.Entities.Migrations
                             Quantity = 1,
                             YearOfIssue = 2018
                         });
-                });
-
-            modelBuilder.Entity("CarPark.Entities.Models.CarPark", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("CarParks");
                 });
 
             modelBuilder.Entity("CarPark.Entities.Models.CarSpecification", b =>
@@ -308,6 +308,9 @@ namespace CarPark.Entities.Migrations
                     b.Property<int>("ClientId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
 
@@ -351,17 +354,24 @@ namespace CarPark.Entities.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "1f15bc0f-3704-457f-a1a6-3777f54edd98",
-                            ConcurrencyStamp = "3e3fe80a-ad81-4512-9e23-ae354cc4af5d",
+                            Id = "77250b5d-7ad4-42ef-9083-286520e6b5f6",
+                            ConcurrencyStamp = "9f814b4b-39b6-4af8-a032-b24291df81f2",
                             Name = "Manager",
                             NormalizedName = "MANAGER"
                         },
                         new
                         {
-                            Id = "92372ee4-a633-40c7-870d-fb44808f2a04",
-                            ConcurrencyStamp = "703adb9f-12da-4b00-b4be-e5b171633bcd",
+                            Id = "b6ecff55-7e82-43fe-ae90-05be10454641",
+                            ConcurrencyStamp = "7bd236ed-669e-4c91-af0b-4a9255561602",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
+                        },
+                        new
+                        {
+                            Id = "635cff4f-dd32-44ec-8469-4e3c0cc98596",
+                            ConcurrencyStamp = "81dcbd0a-9232-4d0f-90e0-ff312ad9b39a",
+                            Name = "User",
+                            NormalizedName = "USER"
                         });
                 });
 
@@ -499,7 +509,7 @@ namespace CarPark.Entities.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CarPark.Entities.Models.CarPark", "CarPark")
+                    b.HasOne("CarPark.Entities.Models.BranchCarPark", "CarPark")
                         .WithMany("Orders")
                         .HasForeignKey("CarParkId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -569,15 +579,15 @@ namespace CarPark.Entities.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("CarPark.Entities.Models.BranchCarPark", b =>
+                {
+                    b.Navigation("Orders");
+                });
+
             modelBuilder.Entity("CarPark.Entities.Models.Car", b =>
                 {
                     b.Navigation("CarSpecification");
 
-                    b.Navigation("Orders");
-                });
-
-            modelBuilder.Entity("CarPark.Entities.Models.CarPark", b =>
-                {
                     b.Navigation("Orders");
                 });
 

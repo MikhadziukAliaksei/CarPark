@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CarPark.Entities.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -273,7 +273,8 @@ namespace CarPark.Entities.Migrations
                     OrderDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CarParkId = table.Column<int>(type: "int", nullable: false),
                     ClientId = table.Column<int>(type: "int", nullable: false),
-                    CarId = table.Column<int>(type: "int", nullable: false)
+                    CarId = table.Column<int>(type: "int", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -301,12 +302,12 @@ namespace CarPark.Entities.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "1f15bc0f-3704-457f-a1a6-3777f54edd98", "3e3fe80a-ad81-4512-9e23-ae354cc4af5d", "Manager", "MANAGER" });
-
-            migrationBuilder.InsertData(
-                table: "AspNetRoles",
-                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "92372ee4-a633-40c7-870d-fb44808f2a04", "703adb9f-12da-4b00-b4be-e5b171633bcd", "Administrator", "ADMINISTRATOR" });
+                values: new object[,]
+                {
+                    { "77250b5d-7ad4-42ef-9083-286520e6b5f6", "9f814b4b-39b6-4af8-a032-b24291df81f2", "Manager", "MANAGER" },
+                    { "b6ecff55-7e82-43fe-ae90-05be10454641", "7bd236ed-669e-4c91-af0b-4a9255561602", "Administrator", "ADMINISTRATOR" },
+                    { "635cff4f-dd32-44ec-8469-4e3c0cc98596", "81dcbd0a-9232-4d0f-90e0-ff312ad9b39a", "User", "USER" }
+                });
 
             migrationBuilder.InsertData(
                 table: "ManufacturerCountries",

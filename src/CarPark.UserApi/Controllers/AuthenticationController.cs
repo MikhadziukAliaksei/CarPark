@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace CarPark.UserApi.Controllers
@@ -38,6 +39,10 @@ namespace CarPark.UserApi.Controllers
         [SwaggerOperation(Summary = "Register new user")]
         public async Task<IActionResult> Register([FromBody] UserForRegisterDto userDto)
         {
+            userDto.Roles = new List<string>()
+            {
+                "User"
+            };
             var user = _mapper.Map<User>(userDto);
             var result = await _userManager.CreateAsync(user, userDto.Password);
 
@@ -50,7 +55,6 @@ namespace CarPark.UserApi.Controllers
 
                 return BadRequest(ModelState);
             }
-
             await _userManager.AddToRolesAsync(user, userDto.Roles);
 
             return StatusCode(201);

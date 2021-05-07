@@ -33,7 +33,7 @@ namespace CarPark.Api.Controllers
             _specificationService = specificationService;
         }
 
-        [Authorize]
+        
         [HttpGet( Name = "GetCars" )]
         [SwaggerResponse(StatusCodes.Status200OK)]
         [SwaggerResponse(StatusCodes.Status500InternalServerError)]
@@ -71,7 +71,6 @@ namespace CarPark.Api.Controllers
 
 
        
-        [Authorize]
         [HttpPost]
         [SwaggerResponse(StatusCodes.Status201Created)]
         [SwaggerOperation(Summary = "Create new car")]
