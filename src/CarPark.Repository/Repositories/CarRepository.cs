@@ -1,8 +1,11 @@
 ﻿using CarPark.Contracts.Interfaces;
 using CarPark.Entities.Context;
 using CarPark.Entities.Models;
-using System.Collections.Generic;
+using CarPark.Entities.RequestFeatures;
+using CarPark.Repository.Repositories.Extensions;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace CarPark.Repository.Repositories
 {
@@ -26,14 +29,18 @@ namespace CarPark.Repository.Repositories
         public Car GetCar(int id, bool trackChanges) =>
             FindByConditions(item => item.Id.Equals(id), trackChanges)
             .SingleOrDefault();
-             
-        
 
-        public IEnumerable<Car> GetCars(bool trackChanges) =>
-            GetAll(trackChanges)
-            .Where(item => !item.IsDeleted)
-            .OrderBy(item => item.Mark)
-            .ToList();
+
+        public async Task<PagedList<Car>> GetCarsAsync(CarsParameter carsParameters, bool trackChanges)
+        {
+            var cars = await GetAll(trackChanges)
+                .FilterCars(carsParameters.MinYearOfIssue, carsParameters.MaxYearOfIssue)
+                .Search(carsParameters.SearchTerm)
+                .Sort(carsParameters.OrderBy)
+                .ToListAsync();
+
+            return PagedList<Car>.ToPagedList(cars, carsParameters.PageNumber, carsParameters.PageSize);
+        }
 
         public void UpdateCar(Car car) => Edit(car);
     }

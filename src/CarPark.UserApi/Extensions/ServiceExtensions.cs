@@ -10,9 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
 using System;
-using System.Text;
 
 namespace CarPark.UserApi.Extensions
 {
@@ -47,16 +45,18 @@ namespace CarPark.UserApi.Extensions
             })
             .AddJwtBearer(options =>
             {
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidateLifetime = true,
-                    ValidateIssuerSigningKey = true,
-                    ValidIssuer = jwtSettings.GetSection("validIssuer").Value,
-                    ValidAudience = jwtSettings.GetSection("validAudience").Value,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
-                };
+                options.Authority = configuration["Auth2.0:Authority"];
+                options.Audience = configuration["Auth2.0:Audience"];
+                //options.TokenValidationParameters = new TokenValidationParameters
+                //{
+                //    ValidateIssuer = true,
+                //    ValidateAudience = true,
+                //    ValidateLifetime = true,
+                //    ValidateIssuerSigningKey = true,
+                //    ValidIssuer = jwtSettings.GetSection("validIssuer").Value,
+                //    ValidAudience = jwtSettings.GetSection("validAudience").Value,
+                //    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
+                //};
             });
         }
 

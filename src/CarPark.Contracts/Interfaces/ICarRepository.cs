@@ -1,11 +1,13 @@
 ﻿using CarPark.Entities.Models;
+using CarPark.Entities.RequestFeatures;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CarPark.Contracts.Interfaces
 {
     public interface ICarRepository
     {
-        IEnumerable<Car> GetCars(bool trackChanges);
+        Task<PagedList<Car>> GetCarsAsync(CarsParameter carsParameters, bool trackChanges);
 
         Car GetCar(int id, bool trackChanges);
 

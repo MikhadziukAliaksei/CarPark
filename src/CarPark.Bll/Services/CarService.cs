@@ -1,7 +1,9 @@
 ﻿using CarPark.Contracts.Interfaces;
 using CarPark.Contracts.Services;
 using CarPark.Entities.Models;
+using CarPark.Entities.RequestFeatures;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CarPark.Bll.Services
 {
@@ -30,9 +32,9 @@ namespace CarPark.Bll.Services
             return _repositoryManager.Car.GetCar(id, trackChanges);
         }
 
-        public IEnumerable<Car> GetCars(bool trackChanges)
+        public async Task<PagedList<Car>> GetCarsAsync(CarsParameter carsParameters ,bool trackChanges)
         {
-            var cars = _repositoryManager.Car.GetCars(trackChanges);
+            var cars = await _repositoryManager.Car.GetCarsAsync(carsParameters,trackChanges);
             return cars;
         }
 

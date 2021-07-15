@@ -38,7 +38,7 @@ namespace CarPark.UserApi.Service
         {
             _user = await _userManager.FindByEmailAsync(userForAuth.Email);
             return (_user != null && await _userManager.CheckPasswordAsync(_user,
-           userForAuth.Password));
+            userForAuth.Password));
 
         }
 

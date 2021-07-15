@@ -2,13 +2,15 @@
 using CarPark.Contracts.Interfaces.Logger;
 using CarPark.Contracts.Services;
 using CarPark.Entities.Models;
+using CarPark.Entities.RequestFeatures;
 using CarPark.EntitiesDto;
 using CarPark.EntitiesDto.Car;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Swashbuckle.AspNetCore.Annotations;
 using System;
+using System.Threading.Tasks;
 
 namespace CarPark.Api.Controllers
 {
@@ -39,16 +41,21 @@ namespace CarPark.Api.Controllers
         [SwaggerResponse(StatusCodes.Status500InternalServerError)]
         [SwaggerResponse(StatusCodes.Status401Unauthorized)]
         [SwaggerOperation(Summary = "Get cars without  deleted car")]
-        public IActionResult GetCars()
+        public async Task<IActionResult> GetCarsAsync([FromQuery] CarsParameter carsParameters)
         {
             try
             {
-                var cars = _carService.GetCars(trackChanges: false);
+                if (!carsParameters.ValidYearOfIssueRange)
+                {
+                    return BadRequest("Max year of issue can't be less than min.");
+                }
+                var cars = await _carService.GetCarsAsync(carsParameters, trackChanges: false);
+                Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(cars.MetaData));
                 return Ok(cars);
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Something went wrong in the {nameof(GetCars)} action {ex}");
+                _logger.LogError($"Something went wrong in the {nameof(GetCarsAsync)} action {ex}");
                 return StatusCode(500);
             }
 
